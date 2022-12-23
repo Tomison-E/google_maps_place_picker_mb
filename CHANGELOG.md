@@ -1,4 +1,10 @@
-## [2.0.0-mb.22] - 08/Aug/2022
+## [3.0.0] - 22/Dec/2022
+
+- Upgrade packages
+- Added latest renderer support for Android
+- Flutter 2 support has been dropped in consequence
+
+## [2.0.0-mb.22] - 09/Aug/2022
 
 - Upgrade packages
 - Fix shadow clipping on AutoCompleteSearch

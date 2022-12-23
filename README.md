@@ -153,7 +153,18 @@ If you want to run your app on the Simulator, please make sure to set a location
 
 ### Basic usage
 
-You can use PlacePicker by pushing to a new page using Navigator, OR put as a child of any widget.  
+First of all, it is recommend to enable Hybrid Composition on Android to avoid flickering issues when the map gets redrawn: 
+
+```dart
+void main() {
+  if(Platform.isAndroid) {
+    AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+  }
+  return runApp(MyApp());
+}
+```
+
+You can now use PlacePicker by pushing to a new page using Navigator, OR put as a child of any widget.  
 When the user picks a place on the map, it will return result to 'onPlacePicked' with PickResult type.
 Alternatively, you can build your own way with 'selectedPlaceWidgetBuilder' and fetch result from it (See the instruction below).
 
@@ -178,7 +189,7 @@ Navigator.push(
           },
           initialPosition: HomePage.kInitialPosition,
           useCurrentLocation: true,
-          resizeToAvoidBottomInset: false, // remove this line, if map offsets are wrong
+          resizeToAvoidBottomInset: false, // only works in page mode, less flickery, remove if wrong offsets
         ),
       ),
     );
@@ -432,7 +443,7 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
 );
 ```
 
-![](screenshot2.png)
+![](screenshot.png)
 
 ## Feature Requests and Issues
 > Please file feature requests at the [original issue tracker][tracker] and bugs at the [MB edition issue tracker][tracker_fork]. I fetch any significant feature requests from the original repository, but bugs could be specific to this MB edition, so I want to take care by myself on them.
